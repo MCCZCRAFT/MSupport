@@ -133,9 +133,22 @@ client.on('messageReactionAdd', (reaction, user) => {
                 userTickets.set(user.id, ch.id); // Once ticket is created, set the user's id as a key mapping to the channel id.
                 let embed = new discord.RichEmbed();
                 embed.setTitle('Ticket Support');
-                embed.setDescription('Please briefly explain your problem here and a staff member will get back to you shortly.');
+                embed.setDescription('Podpora už s jejich raketovými prsty se dostanou hned ke tobě!');
                 embed.setColor('#40BCD8');
-                ch.send(embed) // Send a message to user.
+                ch.send(embed) // Send a message to user
+                var data = "{
+  \"embeds\": [
+    {
+      \"title\": \"Byl vytvoren ticket!\"
+    }
+  ],
+  \"username\": \"MSupport\"
+}
+                    "
+                var request = new XMLHttpRequest();
+request.open('POST', '/my/url', true);
+request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+request.send(data);
             }).catch(err => console.log(err));
         }
     }
